@@ -1,10 +1,11 @@
 import mysql.connector
 
+
 class UsuarioRepo():
     def __init__(self, mydb):
         self.mydb = mydb
 
-    def leer_usuarios(self):
+    def leer_usuario(self):
         cursor = self.mydb.cursor()
 
         cursor.execute("SELECT * FROM usuario")
@@ -17,18 +18,15 @@ class UsuarioRepo():
     def crear_usuario(self, user):
         cursor = self.mydb.cursor()
         
-        sql = "INSERT INTO usuario (id_user,nombre, apellido, email, passwd, fecha_reg, id_rol, is_active)"\
-        "VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO usuario (nombre, apellido, email, passwd, id_rol)"\
+        "VALUES (%s,%s,%s,%s,%s)"
 
         val=(
-            user.id_user,
             user.nombre,
             user.apellido,
             user.email,
             user.passwd,
-            user.fecha_reg,
-            user.id_rol,
-            user.is_active
+            1
         )
 
         try:
@@ -51,5 +49,6 @@ class UsuarioRepo():
         self.mydb.commit()
         cursor.close()
 
-    def eliminar_usuario (self):
-        pass
+    # def eliminar_usuario (self):
+        # pass
+

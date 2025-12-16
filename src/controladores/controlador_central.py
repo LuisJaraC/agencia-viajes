@@ -10,4 +10,5 @@ class ControladorCentral():
     def ejecutar(self):
         
         self.rol_control.leer_rol()
-        pass
+        self.usuario_control.leer_usuario()
+        
