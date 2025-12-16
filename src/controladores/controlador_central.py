@@ -22,7 +22,6 @@ class ControladorCentral():
         opc = vista_central.vista_general()
 
         if opc == "1":
-            print("dentro de if")
             credenciales = vista_central.iniciar_sesion()
             self.servicio_central.usuario_servicio.iniciar_sesion(credenciales)
         if opc == "2":
