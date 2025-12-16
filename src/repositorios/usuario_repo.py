@@ -5,15 +5,14 @@ class UsuarioRepo():
     def __init__(self, mydb):
         self.mydb = mydb
 
-    def leer_usuario(self):
+    def leer_email_passwd_usuario(self):
         cursor = self.mydb.cursor()
 
-        cursor.execute("SELECT * FROM usuario")
+        cursor.execute("SELECT email, passwd, id_rol FROM usuario")
         resultados = cursor.fetchall()
 
-        for user in resultados:
-            print(user)
         cursor.close()
+        return resultados
 
     def crear_usuario(self, user):
         cursor = self.mydb.cursor()
