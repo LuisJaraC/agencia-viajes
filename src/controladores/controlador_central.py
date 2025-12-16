@@ -6,5 +6,9 @@ class ControladorCentral():
         self.usuario_control = UsuarioControl(servicio_central)
 
     def ejecutar(self):
+<<<<<<< HEAD
         # a
+=======
+        #b
+>>>>>>> rama_luis
         pass

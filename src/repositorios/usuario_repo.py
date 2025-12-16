@@ -5,9 +5,9 @@ class UsuarioRepo():
     def leer_usuarios(self):
         cursor = self.mydb.cursor()
 
-        cursor.execute("SELECT * FROM veterinario")
+        cursor.execute("SELECT * FROM agencia_viajes")
         resultados = cursor.fetchall()
 
-        for vet in resultados:
-            print(vet)
+        for user in resultados:
+            print(user)
         cursor.close()
