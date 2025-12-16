@@ -8,6 +8,7 @@ class VistaGeneral():
 
             1. Inicio sesión
             2. Registro
+            3. Cerrar Sesión
             
             Eleccion: """)
 
