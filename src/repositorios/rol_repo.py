@@ -7,7 +7,7 @@ class RolRepo():
     def leer_rol(self):
         cursor = self.mydb.cursor()
 
-        cursor.execute("SELECT id, rol FROM rol")
+        cursor.execute("SELECT * FROM rol")
         resultados = cursor.fetchall()
 
         # Convertimos tupla en una lista de objetos
