@@ -1,14 +1,13 @@
 from .usuario_control import UsuarioControl
+from .rol_control import RolControl
 
 # DI para usuario, completar para el resto
 class ControladorCentral():
     def __init__(self, servicio_central):
         self.usuario_control = UsuarioControl(servicio_central)
+        self.rol_control = RolControl(servicio_central)
 
     def ejecutar(self):
-<<<<<<< HEAD
-        # a
-=======
-        #b
->>>>>>> rama_luis
+        
+        self.rol_control.leer_rol()
         pass
