@@ -11,3 +11,4 @@ class RolRepo():
         for rol in resultados:
             print(rol)
         cursor.close()
+
