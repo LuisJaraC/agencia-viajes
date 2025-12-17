@@ -32,41 +32,39 @@ class ControladorCentral():
 
                 # bifucarción. A que sub controlador se manda el flujo
                 if rol == "1":
-                    vista_cliente = ClienteVista()
-                    opc2 = vista_cliente.menu_cliente()
-                    self.flujo_cliente(opc2)
+                    self.flujo_cliente()
                 elif rol == "2":
-                    vista_adm = AdmVista()
-                    opc3 = vista_adm.menu_adm()
-                    self.flujo_adm(opc3)
+                    self.flujo_adm()
                 elif rol == "3":
-                    vista_agencia = AgenciaVista()
-                    opc4 = vista_agencia.menu_agencia()
-                    self.flujo_agencia(opc4)
+                    self.flujo_agencia()
             elif opc1 == "2":
                 credenciales_registro = vista_central.registrar()
                 self.servicio_central.usuario_servicio.registrar(credenciales_registro)
             elif opc1 == "3":
                 break;
 
-    def flujo_cliente(self, opc2):
+    def flujo_cliente(self):
         # opc2 es la accion que quiere realizar el cliente dentro de sus posibilidades
         # expuetas en el menu cliente
+        vista_cliente = ClienteVista()
+
         while True:
-            if opc2 == "1":
-                # realizar reserva
-                pass
-            elif opc2 == "2":
+            opc = vista_cliente.menu_cliente()
+            if opc == "1":
+                self.reserva_control.crear_reserva()
+            elif opc == "2":
                 # revisar historial de reservar de este cliente
                 pass
-            elif opc2 == "3":
+            elif opc == "3":
                 break
 
 
-    def flujo_adm(self, opc3):
-        # mismo que flujo cliente
-        pass
+    def flujo_adm(self):
+        vista_adm = AdmVista()
+        opc = vista_adm.menu_adm()
+        
 
-    def flujo_agencia(self, opc4):
-        # mismo que flujo cliente
-        pass
+    def flujo_agencia(self):
+        vista_agencia = AgenciaVista()
+        opc = vista_agencia.menu_agencia()
+        

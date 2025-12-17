@@ -5,15 +5,16 @@ class PaqueteRepo():
     def __init__(self, mydb):
         self.mydb = mydb
 
-    def leer_paquete(self):
+    def leer_paquetes_disponibles(self):
         cursor = self.mydb.cursor()
 
-        cursor.execute("SELECT * FROM paquete_turistico")
+        # Traemos solo los paquetes disponibles, por orden en la fecha de inicio
+        cursor.execute("SELECT * FROM paquete_turistico WHERE is_active = TRUE ORDER BY fecha_ini ASC")
         resultados = cursor.fetchall()
 
-        for paq in resultados:
-            print(paq)
         cursor.close()
+
+        return resultados
     
     def crear_paquete(self, paquete):
         cursor = self.mydb.cursor()
