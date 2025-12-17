@@ -43,10 +43,13 @@ class UsuarioServicio():
 
 
     def leer_usuario(self):
-        pass
+        self.repo_central.UsuarioRepo.leer_usuario()
     
     def crear_usuario(self):
         self.repo_central.UsuarioRepo.crear_usuario()
     
     def actualizar_usuario(self):
         self.repo_central.UsuarioRepo.actualizar_usuario()
+    
+    def actualizar_estado(self):
+        self.repo_central.UsuarioRepo.estado_usuario()

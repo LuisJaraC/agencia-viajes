@@ -29,17 +29,18 @@ class ControladorCentral():
             if opc1 == "1":
                 credenciales = vista_central.iniciar_sesion()
                 rol = self.servicio_central.usuario_servicio.iniciar_sesion(credenciales)
+                print(f"tipo: {type(rol)}, dato: {rol}")
 
                 # bifucarción. A que sub controlador se manda el flujo
-                if rol == "1":
+                if rol == 1:
                     vista_cliente = ClienteVista()
                     opc2 = vista_cliente.menu_cliente()
                     self.flujo_cliente(opc2)
-                elif rol == "2":
+                elif rol == 2:
                     vista_adm = AdmVista()
                     opc3 = vista_adm.menu_adm()
                     self.flujo_adm(opc3)
-                elif rol == "3":
+                elif rol == 3:
                     vista_agencia = AgenciaVista()
                     opc4 = vista_agencia.menu_agencia()
                     self.flujo_agencia(opc4)
@@ -64,8 +65,28 @@ class ControladorCentral():
 
 
     def flujo_adm(self, opc3):
-        # mismo que flujo cliente
-        pass
+        vista_adm = AdmVista()
+
+        while True:
+            opc3 = vista_adm.menu_adm()
+            if opc3 == "1":
+                opc_adm_1 = vista_adm.menu_gestion()
+                self.submenu_adm(opc_adm_1)
+            elif opc3 == "2":
+                # Reporte global
+                pass
+            elif opc3 == "3":
+                break
+
+    def submenu_adm(self, opc_adm_1):
+            if opc_adm_1 == "1":
+                self.servicio_central.usuario_servicio.leer_usuario()
+            elif opc_adm_1 == "2":
+                pass
+            elif opc_adm_1 == "3":
+                self.flujo_adm("3")
+            
+        
 
     def flujo_agencia(self, opc4):
         # mismo que flujo cliente

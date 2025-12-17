@@ -1,9 +1,31 @@
 import mysql.connector
-
+from ..modelos.usuario_modelo import Usuario
 
 class UsuarioRepo():
     def __init__(self, mydb):
         self.mydb = mydb
+
+    def leer_usuario(self):
+        cursor = self.mydb.cursor()
+
+        cursor.execute("SELECT * FROM usuario")
+        resultados = cursor.fetchall()
+
+        # Convertimos tupla en una lista de objetos
+        #id_user= [0], nombre=[1], apellido=[2], email=[3], passwd=[4], id_rol=[5], fecha_reg=[6], is_active=[7]
+        lista_objetos_usuario = []
+        for tupla in resultados:
+            rol_obj = Usuario(
+                id_user=tupla[0],
+                nombre=tupla[1],
+                id_rol=tupla[5],
+                is_active=tupla[7]
+                )
+            lista_objetos_usuario.append(rol_obj)
+            
+        cursor.close()
+        
+        return lista_objetos_usuario
 
     def leer_email_passwd_usuario(self):
         cursor = self.mydb.cursor()

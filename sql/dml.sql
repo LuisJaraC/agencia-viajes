@@ -20,10 +20,10 @@ INSERT INTO paquete_turistico (nombre_paq, precio, cupos, stock, fecha_ini, fech
 -- 4. Usuarios (2 registros: 1 Admin y 1 Cliente para pruebas)
 -- IMPORTANTE: 'passwd' aquí es texto plano para prueba DB. 
 -- En la app real, el Python debe hashearlo antes de comparar.
-INSERT INTO usuario (nombre, apellido, email, passwd, id_rol, is_active) VALUES 
-('Juan', 'Admin', 'admin@agencia.cl', 'admin123_hash_falso', 2, TRUE), -- Rol 2 = ADMIN
-('Maria', 'Cliente', 'maria@correo.com', 'cliente123_hash_falso', 1, TRUE); -- Rol 1 = CLIENTE
-('Jose', 'Agencia', 'Jose@agencia.com', 'agencia123_hash_falso', 3, TRUE); -- Rol 3 = AGENCIA
+INSERT INTO `usuario` (`id_user`, `nombre`, `apellido`, `email`, `passwd`, `fecha_reg`, `id_rol`, `is_active`) VALUES
+(1, 'Juan', 'Perez', 'juan@admin.cl', '$2b$12$vgRT57WdXZEYYMcla2aof.qCl0b0FCcMYlcI6rGqcrTmSu9R8NFo.', '2025-12-17 03:04:49', 2, 1), -- Rol 2 = ADMIN
+(2, 'Luis', 'Jara', 'luis@agencia.cl', '$2b$12$aI7Y.iG1OTKrkXT1SbOBi.PKoGahW9VfMR75zRbDQ7mqtzVeKpQ7e', '2025-12-17 03:11:54', 3, 1), -- Rol 3 = AGENCIA
+(3, 'marco', 'villa', 'marco@mail.com', '$2b$12$TJusHg0rCPtTkvaux8s4Z.tI1yoxN5P8me1xEZFaNFEmCEVyscX4m', '2025-12-16 20:36:05', 1, 1); -- Rol 1 = CLIENTE
 
 -- 5. Tabla Intermedia Destino-Paquete (2 registros)
 -- Vinculamos el Destino 1 con Paquete 1, y Destino 2 con Paquete 2
