@@ -1,5 +1,5 @@
 import mysql.connector
-
+from src.modelos.reserva_modelo import Reserva
 
 class ReservaRepo():
     def __init__(self, mydb):
@@ -14,6 +14,28 @@ class ReservaRepo():
         for res in resultados:
             print(res)
         cursor.close()
+
+    def leer_reserva_usuario(self, id_user):
+        cursor = self.mydb.cursor()
+
+        cursor.execute(f"SELECT * FROM reserva WHERE id_user = {id_user}")
+        reservas_usuario = cursor.fetchall()
+        cursor.close()
+
+        lista_objetos = []
+
+        for i in reservas_usuario:
+            reserva_obj = Reserva(
+                id_reserva=i[0],     
+                fecha_creacion=i[1],  
+                ctd_personas=i[2],    
+                precio_pactado=i[3],
+                id_user=i[4],
+                id_paquete=i[5]
+            )
+            lista_objetos.append(reserva_obj)
+
+        return lista_objetos
 
     def crear_reserva(self, reserva):
         cursor = self.mydb.cursor()

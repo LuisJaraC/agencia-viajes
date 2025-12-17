@@ -38,7 +38,8 @@ class ReservaServicio():
 
         self.repo_central.PaqueteRepo.actualizar_paquete(id_paquete,var_mod,cupos_actualizado)
 
+    def leer_reserva_usuario(self, usuario_obj):
 
-        
-    def leer_reserva(self):
-        self.repo_central.ReservaRepo.leer_reserva()
+        id_user = usuario_obj.id_user
+        reservas_usuario = self.repo_central.ReservaRepo.leer_reserva_usuario(id_user)
+        return reservas_usuario

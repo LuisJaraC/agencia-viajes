@@ -34,5 +34,5 @@ INSERT INTO destino_paquete (id_destino, id_paquete) VALUES
 -- 6. Reservas (2 registros)
 -- Maria (id_user=2) compra ambos paquetes
 INSERT INTO reserva (ctd_personas, precio_pactado, id_user, id_paquete) VALUES 
-(2, 300000, 2, 1), -- 2 personas * 150.000 (Precio snapshot del paquete 1)
-(1, 120000, 2, 2); -- 1 persona * 120.000 (Precio snapshot del paquete 2)
+(2, 300000, 3, 1), -- 2 personas * 150.000 (Precio snapshot del paquete 1)
+(1, 120000, 3, 2); -- 1 persona * 120.000 (Precio snapshot del paquete 2)

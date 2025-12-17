@@ -55,6 +55,7 @@ class ReservaVista():
                 print(f"Ocurrió un error: {e}")     
 
     def confirmar_monto(self, monto):
+
         confirmacion = None
         if monto == None:
             print("\nNo hay cupos suficientes")
@@ -64,3 +65,20 @@ class ReservaVista():
                                     2. Declinar reserva""")
         
         return confirmacion
+
+    def mostrar_reservas_usuario(self, reservas_usuario):
+        if not reservas_usuario:
+            print("\nNo tienes reservas registradas actualmente.")
+            return
+        
+        print(f"       Mi Historial Reservas: ({len(reservas_usuario)})")
+        
+        for reserva in reservas_usuario:
+            print(f"\nN° Reserva:     {reserva.id_reserva}")
+            print(f"Fecha Compra:   {reserva.fecha_creacion}")
+            print(f"ID Paquete:     {reserva.id_paquete}")
+            print(f"Pasajeros:      {reserva.ctd_personas}")
+            print(f"Precio Total:   {reserva.precio_pactado}\n")
+        
+        return
+

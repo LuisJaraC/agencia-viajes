@@ -57,8 +57,8 @@ class ControladorCentral():
             if opc == "1":
                 self.reserva_control.crear_reserva(usuario_obj)
             elif opc == "2":
-                # revisar historial de reservar de este cliente
-                pass
+                self.reserva_control.leer_reserva_usuario(usuario_obj)
+                
             elif opc == "3":
                 break
 
