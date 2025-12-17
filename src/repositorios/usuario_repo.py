@@ -11,30 +11,22 @@ class UsuarioRepo():
         cursor.execute("SELECT * FROM usuario")
         resultados = cursor.fetchall()
 
-        # Convertimos tupla en una lista de objetos
-        #id_user= [0], nombre=[1], apellido=[2], email=[3], passwd=[4], id_rol=[5], fecha_reg=[6], is_active=[7]
-        lista_objetos_usuario = []
-        for tupla in resultados:
-            rol_obj = Usuario(
-                id_user=tupla[0],
-                nombre=tupla[1],
-                id_rol=tupla[5],
-                is_active=tupla[7]
-                )
-            lista_objetos_usuario.append(rol_obj)
-            
+        lista_objetos_usuario=[]
+        # por cada resultado se instancia la clase usuario para guardarla en una lista
+        for resultado in resultados:
+            usuario = Usuario(
+            id_user=resultado[0],
+            nombre=resultado[1],
+            apellido=resultado[2],
+            email=resultado[3],
+            passwd=resultado[4],
+            id_rol=resultado[5],
+            fecha_reg=resultado[6],
+            is_active=resultado[7]
+            )
+            lista_objetos_usuario.append(usuario)
         cursor.close()
-        
         return lista_objetos_usuario
-
-    def leer_email_passwd_usuario(self):
-        cursor = self.mydb.cursor()
-
-        cursor.execute("SELECT email, passwd, id_rol FROM usuario")
-        resultados = cursor.fetchall()
-
-        cursor.close()
-        return resultados
 
     def crear_usuario(self, user):
         cursor = self.mydb.cursor()

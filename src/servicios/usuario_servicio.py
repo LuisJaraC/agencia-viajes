@@ -7,26 +7,26 @@ class UsuarioServicio():
         self.repo_central = repo_central
 
     def iniciar_sesion(self, credenciales):
-        
-       # resultados_bd[0] es email
-       # resultados_bd[1] es passwd
-       # resultados_bd[2] es rol
-        resultados_bd = self.repo_central.UsuarioRepo.leer_email_passwd_usuario()
-        pw = credenciales[1]
-        for i in resultados_bd:
-            if i[0] == credenciales[0] and bcrypt.checkpw(pw.encode('utf-8'), i[1].encode('utf-8')):
-                print(f"acceso concedido: {i[2]}")
-                return i[2]
+        pw_input = credenciales[1]
+        email_input = credenciales[0]
+       # id_user ; nombre ; apellido ; email
+       # passwd ; id_rol ; fecha_reg ; is_active
+        resultados_bd = self.repo_central.UsuarioRepo.leer_usuario()
+        for usuario in resultados_bd:
+            if usuario.email == email_input and bcrypt.checkpw(pw_input.encode('utf-8'), usuario.passwd.encode('utf-8')): # metodo para comparar hash de contraseñas entre credenciales y bd
+                print(f"acceso concedido: {usuario.nombre} {usuario.apellido}")
+                return (usuario)
 
 
 
     def registrar(self, credenciales_registro):
         # [0] nombre; [1] apellido ; [2] email; [3] contraseña
-        resultados_bd = self.repo_central.UsuarioRepo.leer_email_passwd_usuario()
+        email_input = credenciales_registro[2]
+        resultados_bd = self.repo_central.UsuarioRepo.leer_usuario()
         encontrado = False
 
-        for i in resultados_bd:
-            if i[0] == credenciales_registro[2]:
+        for usuario in resultados_bd:
+            if usuario.email == email_input:
                 print("email ya registrado")
                 encontrado = True
         if encontrado == False:
@@ -40,6 +40,7 @@ class UsuarioServicio():
                         passwd=passwd
             )
             self.repo_central.UsuarioRepo.crear_usuario(usuario)
+            print("Registro exitoso!")
 
 
     def leer_usuario(self):

@@ -28,15 +28,15 @@ class ControladorCentral():
 
             if opc1 == "1":
                 credenciales = vista_central.iniciar_sesion()
-                rol = self.servicio_central.usuario_servicio.iniciar_sesion(credenciales)
-                print(f"tipo: {type(rol)}, dato: {rol}")
+                usuario = self.servicio_central.usuario_servicio.iniciar_sesion(credenciales)
+                print(f"tipo: {type(usuario.id_rol)}, dato: {usuario.id_rol}")
 
                 # bifucarción. A que sub controlador se manda el flujo
-                if rol == 1:
+                if usuario.id_rol == 1:
                     self.flujo_cliente()
-                elif rol == 2:
+                elif usuario.id_rol == 2:
                     self.flujo_adm()
-                elif rol == 3:
+                elif usuario.id_rol == 3:
                     self.flujo_agencia()
             elif opc1 == "2":
                 credenciales_registro = vista_central.registrar()
