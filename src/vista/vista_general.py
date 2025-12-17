@@ -1,3 +1,5 @@
+from getpass import getpass
+
 class VistaGeneral():
     def __init__(self):
         pass
@@ -17,7 +19,7 @@ class VistaGeneral():
     def iniciar_sesion(self):
         print("\n             Inicio Sesion \n")
         email = input("Email: ")
-        passwd = input("Contraseña: ")
+        passwd = getpass("Contraseña: ")
         print("\n Iniciando sesion ... \n")
 
         return (email, passwd)
@@ -27,6 +29,6 @@ class VistaGeneral():
         nombre = input("Nombre: ")
         apellido = input("Apellido: ")
         email = input("Email: ")
-        passwd = input("Contraseña: ")
+        passwd = getpass("Contraseña: ")
 
         return (nombre, apellido, email, passwd)
