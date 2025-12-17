@@ -34,4 +34,4 @@ class ReservaControl:
                 return
 
     def leer_reserva(self):
-        self.servicio_central.reserva_servicio.leer_reserva()
+        return self.servicio_central.reserva_servicio.leer_reserva()
