@@ -29,8 +29,11 @@ class ControladorCentral():
             if opc1 == "1":
                 credenciales = vista_central.iniciar_sesion()
                 usuario = self.servicio_central.usuario_servicio.iniciar_sesion(credenciales)
-                print(f"tipo: {type(usuario.id_rol)}, dato: {usuario.id_rol}")
-
+                
+                if usuario is None: # validacion en caso de que no haya match
+                    print("\n[!] Error: Usuario no encontrado o contraseña incorrecta.")
+                    continue
+                print(f"DEBUG -> Usuario: {usuario.nombre}, Rol ID: {usuario.id_rol}")
                 # bifucarción. A que sub controlador se manda el flujo
                 if usuario.id_rol == 1:
                     self.flujo_cliente()
