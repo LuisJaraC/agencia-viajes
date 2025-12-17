@@ -37,3 +37,25 @@ class AdmVista:
                 Elección: """
                         )
             return opc
+    
+    def menu_detalle_rep(self):
+        print("\n          Menu Administrador \n")
+        opc = input("""
+        1. Reporte detallado
+        2. Total ventas
+        3. Volver al menu anterior
+        
+        Elección: """)   
+        if opc == "3":
+            print("Volviendo al menu anterior...")
+        return opc      
+       
+    def mostrar_total_ventas(self, total):
+        print(f"""\n          Menu Administrador \n")
+             RESUMEN FINANCIERO\n)
+        
+        1. Total Cantidad de Reservas : {total['transacciones']}
+        2. Total Pasajeros :   {total['personas']}
+        3. Ingresos Totales:        ${total['ingresos']}\n""") 
+        
+        input("Presione Enter para continuar...")

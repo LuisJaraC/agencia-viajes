@@ -70,8 +70,9 @@ class ControladorCentral():
                 opc_adm_1 = vista_adm.menu_gestion()
                 self.submenu_adm(opc_adm_1)
             elif opc3 == "2":
-                # Reporte global
-                pass
+                opc_adm_1 = vista_adm.menu_detalle_rep()
+                self.submenu_reporte(opc_adm_1)
+                
             elif opc3 == "3":
                 break
 
@@ -90,14 +91,25 @@ class ControladorCentral():
                 adm_vista = AdmVista()
                 toggle = adm_vista.menu_toggle()
                 if toggle:
-                    self.servicio_central.usuario_servicio.actualizar_estado(toggle)
-                    
+                    self.servicio_central.usuario_servicio.actualizar_estado(toggle)    
             elif opc_adm_1 == "3":
-                # self.flujo_adm("3")
-                pass
+                return
             
-        
-
+    def submenu_reporte(self,opc_rep):
+        if opc_rep == "1":
+            lista_reserva = self.reserva_control.leer_reserva()
+            if not lista_reserva:
+                print("No hay reservas registradas.")
+            else:
+                print("\n--- REPORTE DE RESERVAS ---")
+                for reserva in lista_reserva:
+                    print(reserva)
+        elif opc_rep == "2":
+            reporte = self.reserva_control.reporte_ventas()
+            vista_adm = AdmVista()
+            vista_adm.mostrar_total_ventas(reporte)
+        else:
+            return
     def flujo_agencia(self):
         vista_agencia = AgenciaVista()
 
