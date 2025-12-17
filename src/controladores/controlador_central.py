@@ -58,7 +58,6 @@ class ControladorCentral():
                 self.reserva_control.crear_reserva(usuario_obj)
             elif opc == "2":
                 self.reserva_control.leer_reserva_usuario(usuario_obj)
-                
             elif opc == "3":
                 break
 
@@ -101,5 +100,17 @@ class ControladorCentral():
 
     def flujo_agencia(self):
         vista_agencia = AgenciaVista()
-        opc = vista_agencia.menu_agencia()
+
+        while True:
+            opc = vista_agencia.menu_agencia()
+            if opc == "1":
+                # gestionar destino
+                pass
+            elif opc == "2":
+                # gestionar paquetes
+                pass
+            elif opc== "3":
+                break
+
+
         
