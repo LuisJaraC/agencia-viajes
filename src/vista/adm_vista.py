@@ -37,3 +37,15 @@ class AdmVista:
                 Elección: """
                         )
             return opc
+    
+    def menu_detalle_rep(self):
+        print("\n          Menu Administrador \n")
+        opc = input("""
+        1. Reporte detallado
+        2. Total ventas
+        3. Volver al menu anterior
+        
+        Elección: """)   
+        if opc == "3":
+            print("Volviendo al menu anterior...")
+        return opc         

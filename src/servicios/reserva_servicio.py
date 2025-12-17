@@ -43,3 +43,5 @@ class ReservaServicio():
         id_user = usuario_obj.id_user
         reservas_usuario = self.repo_central.ReservaRepo.leer_reserva_usuario(id_user)
         return reservas_usuario
+    def leer_reserva(self):
+        return self.repo_central.ReservaRepo.leer_reserva()
