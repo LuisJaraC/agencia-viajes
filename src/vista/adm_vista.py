@@ -20,10 +20,20 @@ class AdmVista:
         print("\n          Menu Administrador \n")
         opc_user = input("""
         1. Mostrar usuarios
-        2. Desactivar usuario
+        2. Activar/desactivar usuario
         3. Volver al menu anterior
         
         Elección: """)   
         if opc_user == "3":
             print("Volviendo al menu anterior...")
         return opc_user
+    
+    def menu_toggle(self):
+            print("\n          Menu Administrador \n")
+            opc = input("""
+                Ingrese el ID de usuario a desactivar\n
+                -> Puedes revisarlo en el menu anterior <-
+                
+                Elección: """
+                        )
+            return opc

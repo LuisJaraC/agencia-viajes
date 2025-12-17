@@ -78,11 +78,24 @@ class ControladorCentral():
 
     def submenu_adm(self, opc_adm_1):
             if opc_adm_1 == "1":
-                self.servicio_central.usuario_servicio.leer_usuario()
+                lista_usuario = self.servicio_central.usuario_servicio.leer_usuario()
+                for usuario in lista_usuario:
+                    if str(usuario.id_rol) == "1":
+                        print(f"ID: {usuario.id_user}, nombre: {usuario.nombre} {usuario.apellido}")
+                        if usuario.is_active:
+                            print("ACTIVO")
+                        else:
+                            print("BLOQUEADO")
+                            print("-------------------------")
             elif opc_adm_1 == "2":
-                pass
+                adm_vista = AdmVista()
+                toggle = adm_vista.menu_toggle()
+                if toggle:
+                    self.servicio_central.usuario_servicio.actualizar_estado(toggle)
+                    
             elif opc_adm_1 == "3":
-                self.flujo_adm("3")
+                # self.flujo_adm("3")
+                pass
             
         
 

@@ -66,7 +66,7 @@ class UsuarioRepo():
     def estado_usuario (self, id_user):
         cursor = self.mydb.cursor()
         # se utiliza un "NOT is_active" como inversor logico, para setear el valor opuesto del bool
-        sql = "UPDATE destino SET is_active = NOT is_active WHERE id_destino = %s"
+        sql = "UPDATE usuario SET is_active = NOT is_active WHERE id_user = %s"
         val = (id_user,)
 
         try:
