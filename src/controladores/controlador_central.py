@@ -86,7 +86,6 @@ class ControladorCentral():
                             print("ACTIVO")
                         else:
                             print("BLOQUEADO")
-                            print("-------------------------")
             elif opc_adm_1 == "2":
                 adm_vista = AdmVista()
                 toggle = adm_vista.menu_toggle()
@@ -116,13 +115,42 @@ class ControladorCentral():
         while True:
             opc = vista_agencia.menu_agencia()
             if opc == "1":
-                # gestionar destino
-                pass
+                opc_destino = vista_agencia.menu_destino()
+                self.submenu_destino(opc_destino)
             elif opc == "2":
                 # gestionar paquetes
                 pass
             elif opc== "3":
                 break
 
+    def submenu_destino(self,opc):
+        vista_agencia = AgenciaVista()
+        if opc == "1":
+            lista_destinos = self.servicio_central.destino_servicio.leer_destino()
+            for destino in lista_destinos:
+                print(f"ID: {destino.id_destino}, nombre: {destino.nombre}, precio:{destino.precio_base}")
+                if destino.is_active:
+                    print("ACTIVO")
+                else:
+                    print("BLOQUEADO")
+            
+        elif opc == "2":
+            lista_crear = vista_agencia.crear_destino()
+            self.servicio_central.destino_servicio.crear_destino(lista_crear)
+        elif opc == "3":
+            lista_actualizar = vista_agencia.actualizar_destino()
+            if lista_actualizar:
+                match = self.servicio_central.destino_servicio.actualizar_destino(lista_actualizar)
+                if match:
+                    print("Actualización exitosa.")
+                else:
+                    print("Error: No se pudo actualizar (ID incorrecto o Campo no permitido).")
+        elif opc =="4":
+            cambio_estado = vista_agencia.cambio_estado()
+            if cambio_estado:
+                self.servicio_central.destino_servicio.cambiar_estado(cambio_estado)    
+        elif opc == "5":
+            return
+            
 
         
