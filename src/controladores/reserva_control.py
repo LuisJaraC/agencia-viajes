@@ -35,11 +35,11 @@ class ReservaControl:
             elif confirmacion == None:
                 return
 
-<<<<<<< HEAD
     def leer_reserva_usuario(self, usuario_obj):
         reservas_usuario = self.servicio_central.reserva_servicio.leer_reserva_usuario(usuario_obj)
         self.reservar_vista.mostrar_reservas_usuario(reservas_usuario)
-=======
     def leer_reserva(self):
         return self.servicio_central.reserva_servicio.leer_reserva()
->>>>>>> rama_luis
+    def reporte_ventas(self):
+        reporte = self.servicio_central.reserva_servicio.obtener_total()
+        return reporte

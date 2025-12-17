@@ -106,7 +106,11 @@ class ControladorCentral():
                 for reserva in lista_reserva:
                     print(reserva)
         elif opc_rep == "2":
-            pass
+            reporte = self.reserva_control.reporte_ventas()
+            vista_adm = AdmVista()
+            vista_adm.mostrar_total_ventas(reporte)
+        else:
+            return
     def flujo_agencia(self):
         vista_agencia = AgenciaVista()
         opc = vista_agencia.menu_agencia()
