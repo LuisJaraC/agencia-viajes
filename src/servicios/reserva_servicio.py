@@ -29,6 +29,16 @@ class ReservaServicio():
                 )
         
         self.repo_central.ReservaRepo.crear_reserva(reserva)
+
+        # ahora actualizamos los cupos en paquetes
+        cupos_antiguos = self.repo_central.PaqueteRepo.leer_cupos_paquete(id_paquete)
+        cupos_actualizado = cupos_antiguos[0] - cant_personas_reserva
+        var_mod = "cupos"
+        
+
+        self.repo_central.PaqueteRepo.actualizar_paquete(id_paquete,var_mod,cupos_actualizado)
+
+
         
     def leer_reserva(self):
         self.repo_central.ReservaRepo.leer_reserva()

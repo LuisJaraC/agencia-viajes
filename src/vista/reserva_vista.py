@@ -1,3 +1,5 @@
+import textwrap
+
 class ReservaVista():
     def __init__(self):
         pass
@@ -27,15 +29,16 @@ class ReservaVista():
                 if 0 <= indice_real < len(paquetes_disponibles):
                     paquete_elegido = paquetes_disponibles[indice_real]
 
-                    print(f"""
-                        1. Nombre: {paquete_elegido[1]} \n
+                    mensaje =f"""
+                        1. Nombre: {paquete_elegido[1]} 
                         2. Precio por persona: {paquete_elegido[2]}
                         3. Cupos disponibles: {paquete_elegido[3]}
                         4. Fecha inicio: {paquete_elegido[4]}
-                        5. Fecha fin: {paquete_elegido[5]}""")
+                        5. Fecha fin: {paquete_elegido[5]}
+                    """
+                    print(textwrap.dedent(mensaje))
                     
-                    confirmacion = input("""1. Confirmacion
-                                            2. Ver otro paquete""")
+                    confirmacion = input("""1. Confirmacion \n2. Ver otro paquete \nEleccion: """)
                     
                     if confirmacion == "2":
                         continue
@@ -52,8 +55,9 @@ class ReservaVista():
                 print(f"Ocurrió un error: {e}")     
 
     def confirmar_monto(self, monto):
+        confirmacion = None
         if monto == None:
-            print("No hay cupos suficientes")
+            print("\nNo hay cupos suficientes")
         else:
             confirmacion = input(f""" Monto total: {monto}
                                     1. Confirmar reserva

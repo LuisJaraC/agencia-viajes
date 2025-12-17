@@ -1,18 +1,21 @@
 from getpass import getpass
+import textwrap
 
 class VistaGeneral():
     def __init__(self):
         pass
 
     def vista_general(self):
-        opc = input("""
-                    Pantalla principal
+        print("          Pantalla principal")
 
+        mensaje = """
             1. Inicio sesión
             2. Registro
             3. Cerrar Sesión
+            """
+        print(textwrap.dedent(mensaje))
             
-            Eleccion: """)
+        opc =input("Eleccion: ")
 
         return opc
 

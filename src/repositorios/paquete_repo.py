@@ -16,6 +16,15 @@ class PaqueteRepo():
 
         return resultados
     
+    def leer_cupos_paquete(self, id_paquete):
+        cursor = self.mydb.cursor()
+        cursor.execute(f"SELECT cupos FROM paquete_turistico WHERE id_paquete = {id_paquete}")
+        resultado = cursor.fetchone()
+
+        cursor.close()
+        return resultado
+
+    
     def crear_paquete(self, paquete):
         cursor = self.mydb.cursor()
 
@@ -43,7 +52,7 @@ class PaqueteRepo():
     def actualizar_paquete(self,id_paquete,var_mod,nuevo_dato):
         cursor = self.mydb.cursor()
 
-        sql = f"UPDATE paquete SET {var_mod} = %s WHERE id_paquete = %s"
+        sql = f"UPDATE paquete_turistico SET {var_mod} = %s WHERE id_paquete = %s"
         val = (nuevo_dato,id_paquete)
 
         cursor.execute(sql,val)

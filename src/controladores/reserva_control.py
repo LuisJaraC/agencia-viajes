@@ -32,6 +32,8 @@ class ReservaControl:
                 self.servicio_central.reserva_servicio.confirmar_reserva(id_paquete, id_usuario, cant_personas_reserva, precio_final_o_none)
             elif confirmacion == "2":
                 return
+            elif confirmacion == None:
+                return
 
     def leer_reserva(self):
         self.servicio_central.reserva_servicio.leer_reserva()
