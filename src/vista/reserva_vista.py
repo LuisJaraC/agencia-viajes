@@ -2,8 +2,7 @@ class ReservaVista():
     def __init__(self):
         pass
 
-    def tomar_datos_reserva(self, paquetes_disponibles):
-        
+    def tomar_datos_reserva(self, paquetes_disponibles):  
         while True:
             print("\n      Selecciona paquete para ver detalles \n")
             for i, paquete in enumerate(paquetes_disponibles):
@@ -50,4 +49,14 @@ class ReservaVista():
                 else:
                     print("Opcion fuera de rango") 
             except Exception as e:
-                print(f"Ocurrió un error: {e}")       
+                print(f"Ocurrió un error: {e}")     
+
+    def confirmar_monto(self, monto):
+        if monto == None:
+            print("No hay cupos suficientes")
+        else:
+            confirmacion = input(f""" Monto total: {monto}
+                                    1. Confirmar reserva
+                                    2. Declinar reserva""")
+        
+        return confirmacion
