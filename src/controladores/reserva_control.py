@@ -40,3 +40,6 @@ class ReservaControl:
         self.reservar_vista.mostrar_reservas_usuario(reservas_usuario)
     def leer_reserva(self):
         return self.servicio_central.reserva_servicio.leer_reserva()
+    def reporte_ventas(self):
+        reporte = self.servicio_central.reserva_servicio.obtener_total()
+        return reporte

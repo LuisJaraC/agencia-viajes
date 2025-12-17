@@ -45,3 +45,25 @@ class ReservaServicio():
         return reservas_usuario
     def leer_reserva(self):
         return self.repo_central.ReservaRepo.leer_reserva()
+    
+    def obtener_total(self):
+        lista_reservas = self.leer_reserva()
+
+        transacciones = 0
+        personas = 0
+        total_ingresos = 0
+
+        if lista_reservas:
+            transacciones = len(lista_reservas)
+
+            for reserva in lista_reservas:
+                personas += int(reserva.ctd_personas)
+
+                total_ingresos += int(reserva.precio_pactado)
+
+        return{
+            "transacciones": transacciones,
+            "personas": personas,
+            "ingresos": total_ingresos
+        }
+
