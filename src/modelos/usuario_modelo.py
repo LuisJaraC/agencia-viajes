@@ -7,8 +7,8 @@ class Usuario:
         self.apellido = apellido
         self.email = email
         self.passwd = passwd
-        self.id_rol = id_rol
         self.fecha_reg = fecha_reg or datetime.now()
+        self.id_rol = id_rol
         self.is_active = is_active
 
     def __str__(self):

@@ -33,7 +33,7 @@ class ControladorCentral():
 
                 # bifucarción. A que sub controlador se manda el flujo
                 if usuario.id_rol == 1:
-                    self.flujo_cliente()
+                    self.flujo_cliente(usuario)
                 elif usuario.id_rol == 2:
                     self.flujo_adm()
                 elif usuario.id_rol == 3:
@@ -44,7 +44,7 @@ class ControladorCentral():
             elif opc1 == "3":
                 break;
 
-    def flujo_cliente(self):
+    def flujo_cliente(self, usuario_obj):
         # opc2 es la accion que quiere realizar el cliente dentro de sus posibilidades
         # expuetas en el menu cliente
         vista_cliente = ClienteVista()
@@ -52,7 +52,7 @@ class ControladorCentral():
         while True:
             opc = vista_cliente.menu_cliente()
             if opc == "1":
-                self.reserva_control.crear_reserva()
+                self.reserva_control.crear_reserva(usuario_obj)
             elif opc == "2":
                 # revisar historial de reservar de este cliente
                 pass

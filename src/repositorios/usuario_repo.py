@@ -15,14 +15,15 @@ class UsuarioRepo():
         # por cada resultado se instancia la clase usuario para guardarla en una lista
         for resultado in resultados:
             usuario = Usuario(
-            id_user=resultado[0],
-            nombre=resultado[1],
-            apellido=resultado[2],
-            email=resultado[3],
-            passwd=resultado[4],
-            id_rol=resultado[5],
-            fecha_reg=resultado[6],
-            is_active=resultado[7]
+                id_user=resultado[0],
+                nombre=resultado[1],
+                apellido=resultado[2],
+                email=resultado[3],
+                passwd=resultado[4],
+                # CORREGIDO: Intercambié los índices 5 y 6
+                fecha_reg=resultado[5],  
+                id_rol=resultado[6],     
+                is_active=resultado[7]
             )
             lista_objetos_usuario.append(usuario)
         cursor.close()

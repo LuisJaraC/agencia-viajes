@@ -31,7 +31,10 @@ class ReservaRepo():
             cursor.execute(sql, val)
             self.mydb.commit()
             cursor.close()
+            self.leer_reserva()
             return True
         except mysql.connector.Error as err:
             cursor.close()
             raise ValueError(f"Error: {err}")
+        
+        
