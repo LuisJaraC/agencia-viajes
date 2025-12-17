@@ -3,4 +3,15 @@ class ClienteVista:
         pass
 
     def menu_cliente(self):
-        pass
+        print("\n          Menu Cliente \n")
+        opc = input("""
+        1. Realizar reserva de paquete turístico
+        2. Consultar historial de reservas
+        3. Cerrar sesión
+        
+        Elección: """)
+
+        if opc == "3":
+            print("Cerrando sesion...")
+            
+        return opc

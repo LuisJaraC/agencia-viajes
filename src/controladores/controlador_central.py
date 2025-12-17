@@ -52,7 +52,16 @@ class ControladorCentral():
     def flujo_cliente(self, opc2):
         # opc2 es la accion que quiere realizar el cliente dentro de sus posibilidades
         # expuetas en el menu cliente
-        pass
+        while True:
+            if opc2 == "1":
+                # realizar reserva
+                pass
+            elif opc2 == "2":
+                # revisar historial de reservar de este cliente
+                pass
+            elif opc2 == "3":
+                break
+
 
     def flujo_adm(self, opc3):
         # mismo que flujo cliente
