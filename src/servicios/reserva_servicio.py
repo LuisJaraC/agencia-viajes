@@ -4,3 +4,6 @@ class ReservaServicio():
 
     def leer_reserva(self):
         self.repo_central.ReservaRepo.leer_reserva()
+    
+    def crear_reserva(self):
+        self.repo_central.ReservaRepo.crear_reserva()
