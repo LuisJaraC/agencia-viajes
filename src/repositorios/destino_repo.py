@@ -4,6 +4,30 @@ from src.modelos.destino_modelo import Destino
 class DestinoRepo():
     def __init__(self, mydb):
         self.mydb = mydb
+    
+    def buscar_por_id(self, id_destino):
+        cursor = self.mydb.cursor()
+        cursor.execute("SELECT * FROM destino WHERE id_destino = %s", (id_destino,))
+        res = cursor.fetchone()
+        cursor.close()
+        
+        if res:
+            return Destino(res[0], res[1], res[2], res[3], res[4])
+        return None
+
+    def leer_todos(self):
+        cursor = self.mydb.cursor()
+        # Filtramos solo los activos
+        cursor.execute("SELECT * FROM destino WHERE is_active = TRUE")
+        resultados = cursor.fetchall()
+        cursor.close()
+
+        lista = []
+        for res in resultados:
+            # Reutiliza tu lógica de crear objeto Destino aquí
+            destino = Destino(res[0], res[1], res[2], res[3], res[4])
+            lista.append(destino)
+        return lista
 
     def leer_destino(self):
         cursor = self.mydb.cursor()

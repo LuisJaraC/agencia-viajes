@@ -118,7 +118,7 @@ class ControladorCentral():
                 opc_destino = vista_agencia.menu_destino()
                 self.submenu_destino(opc_destino)
             elif opc == "2":
-                # gestionar paquetes
+                self.paquete_control.menu_gestion_paquetes()
                 pass
             elif opc== "3":
                 break

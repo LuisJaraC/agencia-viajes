@@ -1,14 +1,36 @@
 import mysql.connector
+from src.modelos.paquetes_modelo import Paquete
 
 
 class PaqueteRepo():
     def __init__(self, mydb):
         self.mydb = mydb
 
+    def leer_paquetes_todos(self):
+        cursor = self.mydb.cursor()
+        cursor.execute("SELECT * FROM paquete_turistico")
+        resultados = cursor.fetchall()
+        cursor.close()
+
+        lista_obj = []
+        for i in resultados:
+            paquete_obj = Paquete(
+                id_paquete=i[0],
+                nombre_paq=i[1],
+                precio=i[2],
+                cupos=i[3],      
+                stock=i[4],      
+                fecha_ini=i[5],
+                fecha_fin=i[6],
+                is_active=i[7]
+            )
+            lista_obj.append(paquete_obj)
+
+        return lista_obj
+
     def leer_paquetes_disponibles(self):
         cursor = self.mydb.cursor()
 
-        # Traemos solo los paquetes disponibles, por orden en la fecha de inicio
         cursor.execute("SELECT * FROM paquete_turistico WHERE is_active = TRUE ORDER BY fecha_ini ASC")
         resultados = cursor.fetchall()
 
@@ -28,8 +50,11 @@ class PaqueteRepo():
     def crear_paquete(self, paquete):
         cursor = self.mydb.cursor()
 
-        sql = "INSERT INTO paquete (nombre_paq,precio,cupos,stock,fecha_ini,fecha_fin)"\
-        "VALUES (%s,%s,%s,%s,%s,%s)"
+        sql = """
+            INSERT INTO paquete_turistico 
+            (nombre_paq, precio, cupos, stock, fecha_ini, fecha_fin, is_active) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
 
         val = (
             paquete.nombre_paq,
@@ -37,17 +62,24 @@ class PaqueteRepo():
             paquete.cupos,
             paquete.stock,
             paquete.fecha_ini,
-            paquete.fecha_fin
+            paquete.fecha_fin,
+            paquete.is_active
         )
 
         try:
-            cursor.execute(sql,val)
+            cursor.execute(sql, val)
             self.mydb.commit()
+
+            id_generado = cursor.lastrowid 
+            
             cursor.close()
-            return True
+            
+            return id_generado 
+
         except mysql.connector.Error as err:
             cursor.close()
-            raise ValueError(f"Error: {err}")
+            print(f"Error al crear paquete: {err}")
+            return None
         
     def actualizar_paquete(self,id_paquete,var_mod,nuevo_dato):
         cursor = self.mydb.cursor()

@@ -3,7 +3,8 @@ from ..modelos.destino_modelo import Destino
 class DestinoServicio():
     def __init__(self, repo_central):
         self.repo_central = repo_central
-
+    def leer_todos_los_destinos(self):
+        return self.repo_central.DestinoRepo.leer_todos()
     def leer_destino(self):
         return self.repo_central.DestinoRepo.leer_destino()
     def crear_destino(self,destino):
